@@ -1,0 +1,60 @@
+body {
+    background-color: #295f4e;
+}
+
+.weather-app {
+    background-color: #7dd87d;
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    border: 2px solid;
+    border-radius: 10px;
+    box-shadow: 12px 15px 40px 15px;
+}
+
+#search-form {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 13px;
+}
+
+
+.search-button {
+    background-color: #a7cd78;
+}
+
+
+.current-temperature {
+    display: flex;
+    align-items: flex-start;
+    font-size: 40px;
+}
+
+
+.current-weather {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.current-temperature-icon {
+    position: relative;
+    margin-right: 10px;
+    font-size: 35px;
+}
+
+.current-temperature-value {
+    margin-right: 0.2em;
+  }
+  
+.current-temperature-unit {
+    position: relative;
+    font-size: 20px;
+    margin-top: 0.5em;
+  }
+
+
+.current-city {
+    font-size: 40px;
+    font-weight: bold;
+}
