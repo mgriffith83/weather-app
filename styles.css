@@ -58,3 +58,11 @@ body {
     font-size: 40px;
     font-weight: bold;
 }
+
+.weather-forecast-date {
+    font-weight: bold;
+}
+
+.weather-forecast-temperature-min {
+    opacity: 0.6;
+}
