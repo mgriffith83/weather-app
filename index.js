@@ -6,6 +6,25 @@ function displayTemperature(response) {
     temperatureElement.innerHTML = temperature;
 }
 
+let currentDateElement = document.querySelector("#current-date");
+let currentDate = new Date();
+
+currentDateElement.innerHTML = formatDate(currentDate);
+
+
+let forecast = document.querySelector("#forecast");
+
+forecast.innerHTML = `
+<div class="weather-forecast-date">Monday</div>
+<div class="weather-icon">🌧️</div>
+<div class="weather-forecast-temperatures">
+<div class="weather-forecast-temperature-max">
+<strong>42°</strong>
+</div>
+<div class="weather-forecast-temperature-min">28°</div> 
+</div>
+`;
+
  function search(event) {
       event.preventDefault();
       let searchInputElement = document.querySelector("#search-input");
@@ -47,7 +66,3 @@ axios.get(apiUrl).then(displayTemperature);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-let currentDateElement = document.querySelector("#current-date");
-let currentDate = new Date();
-
-currentDateElement.innerHTML = formatDate(currentDate);

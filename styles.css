@@ -63,6 +63,16 @@ body {
     font-weight: bold;
 }
 
+
+.weather-forecast-temperatures {
+    display: flex;
+}
+
 .weather-forecast-temperature-min {
     opacity: 0.6;
+    font-weight: bold;
+    margin-left: 5px;
 }
+
+
+
