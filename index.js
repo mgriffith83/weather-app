@@ -11,11 +11,22 @@ let currentDate = new Date();
 
 currentDateElement.innerHTML = formatDate(currentDate);
 
+function displayForecast() {
+    let forecast = document.querySelector("#forecast");
 
-let forecast = document.querySelector("#forecast");
-
-forecast.innerHTML = `
-<div class="weather-forecast-date">Monday</div>
+    let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ];
+    
+days.forEach(function (day) {
+forecast.innerHTML += `
+<div class="weather-forecast-date">${day}</div>
 <div class="weather-icon">🌧️</div>
 <div class="weather-forecast-temperatures">
 <div class="weather-forecast-temperature-max">
@@ -24,6 +35,8 @@ forecast.innerHTML = `
 <div class="weather-forecast-temperature-min">28°</div> 
 </div>
 `;
+});
+}
 
  function search(event) {
       event.preventDefault();
@@ -49,6 +62,7 @@ axios.get(apiUrl).then(displayTemperature);
         hours = `0${hours}`;
     }
 
+
     let days = [
         "Sunday",
         "Monday",
@@ -66,3 +80,4 @@ axios.get(apiUrl).then(displayTemperature);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
+displayForecast();
