@@ -23,7 +23,7 @@ function displayForecast() {
         "Friday",
         "Saturday"
     ];
-    
+
 days.forEach(function (day) {
 forecast.innerHTML += `
 <div class="weather-forecast-date">${day}</div>
@@ -61,7 +61,6 @@ axios.get(apiUrl).then(displayTemperature);
     if (hours < 10) {
         hours = `0${hours}`;
     }
-
 
     let days = [
         "Sunday",

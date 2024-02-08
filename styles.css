@@ -61,6 +61,7 @@ body {
 
 .weather-forecast-date {
     font-weight: bold;
+    text-decoration: underline;
 }
 
 
@@ -70,9 +71,22 @@ body {
 
 .weather-forecast-temperature-min {
     opacity: 0.6;
-    font-weight: bold;
+    font-weight: normal;
     margin-left: 5px;
 }
 
+.weather-forecast-temperature-max {
+    font-weight: normal;
+}
+
+.weather-forecast {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-forecast-day {
+    display: flex;
+    flex-direction: column;
+}
 
 
