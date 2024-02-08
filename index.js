@@ -26,6 +26,7 @@ function displayForecast() {
 
 days.forEach(function (day) {
 forecast.innerHTML += `
+<div class="weather-forecast-day">
 <div class="weather-forecast-date">${day}</div>
 <div class="weather-icon">🌧️</div>
 <div class="weather-forecast-temperatures">
