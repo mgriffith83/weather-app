@@ -34,7 +34,7 @@ function displayTemperature(response) {
             "Saturday"
         ];
     let day = days[date.getDay()];
-    let period = "AM";
+    let period = "";
 
     if (hours > 12) {
         hours -= 12;
