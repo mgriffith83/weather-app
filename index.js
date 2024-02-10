@@ -34,12 +34,21 @@ function displayTemperature(response) {
             "Saturday"
         ];
     let day = days[date.getDay()];
+    let period = "AM";
+
+    if (hours > 12) {
+        hours -= 12;
+        period = "PM";
+    }else if (hours === 0) {
+        hours = 12;
+    }
+    
 
     if (minutes < 10) {
         minutes = `0${minutes}`;
     }
 
-    return `${day} ${hours}:${minutes}`;
+    return `${day} ${hours}:${minutes} ${period}`;
 }
 
 function searchCity(city) {
