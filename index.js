@@ -14,9 +14,11 @@ function displayTemperature(response) {
     timeElement.innerHTML = formatDate(date);
     descriptionElement.innerHTML = response.data.condition.description;
     humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
-    windSpeedElement.innerHTML = `${response.data.wind.speed}mph`;
+    windSpeedElement.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
     temperatureElement.innerHTML = Math.round(temperature);
     iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
+
+    getForecast(response.data.city);
 }
 
  function formatDate(date) {
@@ -49,11 +51,15 @@ function searchCity(city) {
 function search(event) {
     event.preventDefault();
     let searchInput = document.querySelector("#search-form-input");
+    let cityName= searchInput.value;
     
-    searchCity(searchInput.value);
+    searchCity(cityName);
+
+    searchInput.value = "";
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+    let date = new Date(timestamp * 1000);
     let days = [
        "Sunday",
        "Monday",
@@ -63,21 +69,35 @@ function displayForecast() {
        "Friday",
        "Saturday"
    ];
+
+   return days[date.getDay()];
+}
+
+function getForecast(city) {
+        let apiKey = "d3b3t4aedod8b547e248fb0521ce3a50";
+        let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;  
+        axios(apiUrl).then(displayForecast);
+     }
+
+function displayForecast(response) {
    let forecastHtml = "";
 
-   days.forEach(function (day) {
+   response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
     forecastHtml += `
     <div class="weather-forecast-day">
-    <div class="weather-forecast-date">${day}</div>
-    <div class="weather-forecast-icon">🌧️</div>
+    <div class="weather-forecast-date">${formatDay(day.time)}</div>
+    
+    <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
     <div class="weather-forecast-temperatures">
     <div class="weather-forecast-temperature">
-    <strong>42°</strong>
+    <strong>${Math.round(day.temperature.maximum)}°</strong>
     </div>
-    <div class="weather-forecast-temperature">28°</div> 
+    <div class="weather-forecast-temperature">${Math.round(day.temperature.minimum)}°</div> 
     </div>
     </div>
     `;
+    }
     });
     
     let forecastElement = document.querySelector("#forecast");
@@ -88,4 +108,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", search);
 
 searchCity("Pollock Pines");
-displayForecast();
